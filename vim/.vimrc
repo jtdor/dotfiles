@@ -16,6 +16,9 @@ set nowrap
 set number
 set ruler
 
+set spelllang=de,en
+set spell
+
 autocmd BufRead,BufNewFile *.tpp set filetype=cpp
 
 " From http://vim-latex.sourceforge.net/documentation/latex-suite/recommended-settings.html
