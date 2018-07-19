@@ -111,3 +111,27 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# Convenience function to create a tags file for a C project, including
+# selected system headers.
+#
+# The used command line options are compatible with Universal Ctags, but *not*
+# with Exuberant Ctags.
+#
+# Usage: myctags [additional option(s)] [file(s)] [directory(s)]
+myctags()
+{
+	declare -r DEV_LIBS=(libc6-dev)
+	declare -r CTAGS_ARGS="--C-kinds=+px --fields=+S --langmap=C:+.h --languages=C --recurse --sort=yes"
+
+	dev_headers=()
+	for dev_lib in "${DEV_LIBS[@]}"; do
+		dev_lib_files=($(dpkg --listfiles "$dev_lib"))
+
+		for dev_lib_file in "${dev_lib_files[@]}"; do
+			[[ -f "$dev_lib_file" ]] && dev_headers+=("$dev_lib_file")
+		done
+	done
+
+	ctags $CTAGS_ARGS "$@" "${dev_headers[@]}"
+}
