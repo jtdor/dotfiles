@@ -135,3 +135,21 @@ myctags()
 
 	ctags $CTAGS_ARGS "$@" "${dev_headers[@]}"
 }
+
+# Convenience function to create a tags file for a C++ project, including
+# selected system headers.
+#
+# The used command line options are compatible with Universal Ctags, but *not*
+# with Exuberant Ctags.
+#
+# Usage: myctags [additional option(s)] [file(s)] [directory(s)]
+mycxxtags()
+{
+	declare -r CTAGS_ARGS="--C++-kinds=+p --extras=+q --fields=+aiS --languages=C,C++ --recurse --sort=yes"
+
+	declare -r stdlib_dir=$(ls -1 --directory /usr/include/c++/* | sort --unique --version-sort | tail --lines=1)
+
+	myctags # Good idea to include this?
+	ctags $CTAGS_ARGS --append --langmap=C++:+. --languages=C,C++ "$stdlib_dir"
+	ctags $CTAGS_ARGS --append "$@"
+}
