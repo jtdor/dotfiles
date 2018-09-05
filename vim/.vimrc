@@ -1,8 +1,6 @@
 unlet! skip_defaults_vim
 source $VIMRUNTIME/defaults.vim
 
-execute pathogen#infect()
-
 set copyindent
 set preserveindent
 set shiftwidth=0
