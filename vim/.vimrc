@@ -28,6 +28,5 @@ let g:tex_flavor="latex"
 
 let g:clang_format#auto_format=1
 let g:clang_format#auto_formatexpr=1
-let g:clang_format#command="/usr/bin/clang-format-7"
 let g:clang_format#detect_style_file=1
 let g:clang_format#enable_fallback_style=0
