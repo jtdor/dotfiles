@@ -153,3 +153,19 @@ mycxxtags()
 	ctags $CTAGS_ARGS --append --langmap=C++:+. --languages=C,C++ "$stdlib_dir"
 	ctags $CTAGS_ARGS --append "$@"
 }
+
+# Convenience function to create a tags file for a Python 3 project, including
+# selected system packages.
+#
+# The used command line options are compatible with Universal Ctags, but *not*
+# with Exuberant Ctags.
+#
+# Usage: mypy3tags [additional option(s)] [file(s)] [directory(s)]
+mypy3tags()
+{
+        declare -r CTAGS_ARGS="--fields=+l --languages=python --python-kinds=-iv --recurse --sort=yes"
+        declare -r stdlib_dir=/usr/lib/python$(python3 --version | grep -Eo "[0-9].[0-9]")
+        declare -r system_packages_dir=/usr/lib/python3/dist-packages
+
+        ctags $CTAGS_ARGS "$stdlib_dir" "$system_packages_dir" "$@"
+}
