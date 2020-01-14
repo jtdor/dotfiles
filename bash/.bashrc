@@ -164,8 +164,11 @@ mycxxtags()
 mypy3tags()
 {
 	declare -r CTAGS_ARGS="--fields=+l --languages=python --python-kinds=-iv --recurse --sort=yes"
-	declare -r stdlib_dir=/usr/lib/python$(python3 --version | grep -Eo "[0-9].[0-9]")
-	declare -r system_packages_dir=/usr/lib/python3/dist-packages
 
-	ctags $CTAGS_ARGS "$stdlib_dir" "$system_packages_dir" "$@"
+	typeset search_path=()
+	for search_dir in $(python3 -c "import sys; print(' '.join(sys.path[1:]))"); do
+		[[ -e "$search_dir" ]] && search_path+=( "$search_dir" )
+	done
+
+	ctags $CTAGS_ARGS "${search_path[@]}" "$@"
 }
