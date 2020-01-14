@@ -163,9 +163,9 @@ mycxxtags()
 # Usage: mypy3tags [additional option(s)] [file(s)] [directory(s)]
 mypy3tags()
 {
-        declare -r CTAGS_ARGS="--fields=+l --languages=python --python-kinds=-iv --recurse --sort=yes"
-        declare -r stdlib_dir=/usr/lib/python$(python3 --version | grep -Eo "[0-9].[0-9]")
-        declare -r system_packages_dir=/usr/lib/python3/dist-packages
+	declare -r CTAGS_ARGS="--fields=+l --languages=python --python-kinds=-iv --recurse --sort=yes"
+	declare -r stdlib_dir=/usr/lib/python$(python3 --version | grep -Eo "[0-9].[0-9]")
+	declare -r system_packages_dir=/usr/lib/python3/dist-packages
 
-        ctags $CTAGS_ARGS "$stdlib_dir" "$system_packages_dir" "$@"
+	ctags $CTAGS_ARGS "$stdlib_dir" "$system_packages_dir" "$@"
 }
