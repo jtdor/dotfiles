@@ -15,7 +15,6 @@ set number
 set ruler
 
 set spelllang=de,en
-set spell
 
 autocmd BufRead,BufNewFile *.tpp set filetype=cpp
 
