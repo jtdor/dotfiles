@@ -1,1 +1,2 @@
+alias rsyncgit='rsync --exclude=.git --filter=":- .gitignore"'
 alias cdtemp='cd "$(mktemp -d)"'
