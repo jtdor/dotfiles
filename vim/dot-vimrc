@@ -18,12 +18,17 @@ set spelllang=de,en
 
 autocmd BufRead,BufNewFile *.tpp set filetype=cpp
 
-" From http://vim-latex.sourceforge.net/documentation/latex-suite/recommended-settings.html
-" IMPORTANT: grep will sometimes skip displaying the file name if you search
-" in a single file. This will confuse Latex-Suite. Set your grep program to
-" always generate a file-name.
-set grepprg=grep\ -HIns\ --exclude=tags\ --exclude-dir=.git\ $*
-let g:tex_flavor="latex"
+if executable("rg")
+	set grepprg=rg\ --vimgrep
+	set grepformat=%f:%l:%c:%m
+else
+	" From http://vim-latex.sourceforge.net/documentation/latex-suite/recommended-settings.html
+	" IMPORTANT: grep will sometimes skip displaying the file name if you search
+	" in a single file. This will confuse Latex-Suite. Set your grep program to
+	" always generate a file-name.
+	set grepprg=grep\ -HIns\ --exclude=tags\ --exclude-dir=.git\ $*
+	let g:tex_flavor="latex"
+endif
 
 let g:clang_format#auto_format=1
 let g:clang_format#auto_formatexpr=1
