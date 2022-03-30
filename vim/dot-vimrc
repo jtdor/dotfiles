@@ -23,10 +23,11 @@ if executable("rg")
 	set grepformat=%f:%l:%c:%m
 else
 	set grepprg=grep\ -HIns\ --exclude=tags\ --exclude-dir=.git\ $*
-	let g:tex_flavor="latex"
 endif
 
 let g:clang_format#auto_format=1
 let g:clang_format#auto_formatexpr=1
 let g:clang_format#detect_style_file=1
 let g:clang_format#enable_fallback_style=0
+
+let g:tex_flavor="latex"
