@@ -25,9 +25,4 @@ else
 	set grepprg=grep\ -HIns\ --exclude=tags\ --exclude-dir=.git\ $*
 endif
 
-let g:clang_format#auto_format=1
-let g:clang_format#auto_formatexpr=1
-let g:clang_format#detect_style_file=1
-let g:clang_format#enable_fallback_style=0
-
 let g:tex_flavor="latex"
