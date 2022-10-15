@@ -172,3 +172,23 @@ mypy3tags()
 
 	ctags $CTAGS_ARGS "${search_path[@]}" "$@"
 }
+
+# Quickly remove a temporary directory created with the cdtemp alias.
+#
+# Usage: rmtemp
+rmtemp()
+{
+	local tmpwd=${PWD}/
+	if [[ "$tmpwd" != /tmp/tmp.* ]]; then
+		printf "not in a '/tmp/tmp.*' path, not removing\n" >&2
+		return
+	fi
+	while [[ ! "$tmpwd" =~ ^/tmp/tmp\.[[:alnum:]]+/$ ]]; do
+		tmpwd=${tmpwd%/*/}/
+	done
+	printf "remove '${tmpwd}'? [yN]: "
+	read answer
+	if [[ "$answer" == "y" ]]; then
+		rm -rf -- "$tmpwd"
+	fi
+}
