@@ -1,4 +1,4 @@
-alias rsyncgit='rsync --exclude=.git --filter=":- .gitignore"'
+alias rsyncgit='git ls-files --exclude-standard --ignored --other | rsync --cvs-exclude --exclude=.git --exclude-from=-'
 alias egrep='egrep --color=auto --exclude=tags --exclude-dir=.git'
 alias fgrep='fgrep --color=auto --exclude=tags --exclude-dir=.git'
 alias grep='grep --color=auto --exclude=tags --exclude-dir=.git'
