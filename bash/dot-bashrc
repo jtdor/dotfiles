@@ -187,7 +187,7 @@ rmtemp()
 		tmpwd=${tmpwd%/*/}/
 	done
 	printf "remove '%s'? [yN]: " "$tmpwd"
-	read answer
+	read -r answer
 	if [[ "$answer" == "y" ]]; then
 		rm -rf -- "$tmpwd"
 	fi
