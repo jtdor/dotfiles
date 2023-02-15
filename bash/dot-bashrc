@@ -183,9 +183,7 @@ rmtemp()
 		printf "not in a '/tmp/tmp.*' path, not removing\n" >&2
 		return
 	fi
-	while [[ ! "$tmpwd" =~ ^/tmp/tmp\.[[:alnum:]]+/$ ]]; do
-		tmpwd=${tmpwd%/*/}/
-	done
+	tmpwd=${tmpwd%"${tmpwd#/tmp/tmp.*/}"}
 	printf "remove '%s'? [yN]: " "$tmpwd"
 	read -r answer
 	if [[ "$answer" == "y" ]]; then
