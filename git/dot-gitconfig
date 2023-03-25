@@ -1,5 +1,7 @@
 [credential "https://github.com/"]
 	helper = store
+[diff]
+	colorMoved = true
 [merge]
 	tool = vimdiff
 [user]
