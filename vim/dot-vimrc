@@ -32,6 +32,7 @@ let g:ale_fixers = {
 	\ "c": ["clang-format"],
 	\ "cpp": ["clang-format"],
 	\ "perl": ["perltidy"],
-	\ "python": ["isort", "black"]
+	\ "python": ["isort", "black"],
+	\ "tex": ["latexindent"],
 \}
 packadd! ale
