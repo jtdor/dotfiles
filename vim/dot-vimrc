@@ -33,6 +33,8 @@ let g:ale_fixers = {
 	\ "cpp": ["clang-format"],
 	\ "perl": ["perltidy"],
 	\ "python": ["isort", "black"],
+	\ "sh": ["shfmt"],
 	\ "tex": ["latexindent"],
 \}
+let g:ale_sh_shfmt_options = "--func-next-line"
 packadd! ale
