@@ -4,5 +4,7 @@
 	colorMoved = true
 [merge]
 	tool = vimdiff
+[pretty]
+	linux-pretty = %h (\"%s\")
 [user]
 	useconfigonly = true
