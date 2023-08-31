@@ -1,2 +1,32 @@
-$pdf_mode = 1;
+# Copied from /usr/share/doc/latexmk/examples/glossaries_latexmkrc
+add_cus_dep( 'acn', 'acr', 0, 'makeglossaries' );
+add_cus_dep( 'glo', 'gls', 0, 'makeglossaries' );
+push @generated_exts, qw(
+  acn
+  acr
+  alg
+  glg
+  glo
+  gls
+);
+
+sub makeglossaries {
+    my ( $base_name, $path ) = fileparse( $_[0] );
+    my @args = ( '-d', $path, $base_name );
+    unshift @args, '-q' if $silent;
+    return system 'makeglossaries', @args;
+}
+
+$pdf_mode      = 1;
 $pdf_previewer = "open %S 2>/dev/null";
+
+push @generated_exts, qw(
+  ist
+  nav
+  run.xml
+  snm
+  tdo
+  vrb
+  _minted-%R/*
+  _minted-%R/
+);
