@@ -4,9 +4,15 @@
 	helper = store
 [diff]
 	colorMoved = true
+[format]
+	coverFromDescription = auto
+[include]
+	path = ~/.git/sendemail-identities
 [merge]
 	tool = vimdiff
 [pretty]
 	linux-pretty = %h (\"%s\")
+[sendemail]
+	confirm = always
 [user]
 	useconfigonly = true
