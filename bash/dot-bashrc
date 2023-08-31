@@ -122,7 +122,7 @@ fi
 myctags()
 {
 	declare -r DEV_LIBS=(libc6-dev)
-	declare -r CTAGS_ARGS=( --C-kinds=+px --fields=+S --langmap=C:+.h --languages=C --recurse --sort=yes )
+	declare -r CTAGS_ARGS=( --append --C-kinds=+px --fields=+S --langmap=C:+.h --languages=C --recurse --sort=yes )
 
 	dev_headers=()
 	for dev_lib in "${DEV_LIBS[@]}"; do
@@ -163,7 +163,7 @@ mycxxtags()
 # Usage: mypy3tags [additional option(s)] [file(s)] [directory(s)]
 mypy3tags()
 {
-	declare -r CTAGS_ARGS=( --fields=+l --languages=python --python-kinds=-iv --recurse --sort=yes )
+	declare -r CTAGS_ARGS=( --append --fields=+l --languages=python --python-kinds=-iv --recurse --sort=yes )
 
 	typeset search_path=()
 	for search_dir in $(python3 -c "import sys; print(' '.join(sys.path[1:]))"); do
