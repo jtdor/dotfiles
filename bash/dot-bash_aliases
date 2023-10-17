@@ -1,5 +1,5 @@
-alias rsyncgit='git ls-files --exclude-standard --ignored --other | rsync --cvs-exclude --exclude=.git --exclude-from=-'
+alias cdtemp='cd "$(mktemp -d)"'
 alias egrep='egrep --color=auto --exclude=tags --exclude-dir=.git'
 alias fgrep='fgrep --color=auto --exclude=tags --exclude-dir=.git'
 alias grep='grep --color=auto --exclude=tags --exclude-dir=.git'
-alias cdtemp='cd "$(mktemp -d)"'
+alias rsyncgit='git ls-files --exclude-standard --ignored --other | rsync --cvs-exclude --exclude=.git --exclude-from=-'
