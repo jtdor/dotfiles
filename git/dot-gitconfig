@@ -1,7 +1,5 @@
 [credential]
 	helper = cache --timeout=3600
-[credential "https://github.com/"]
-	helper = store
 [diff]
 	colorMoved = true
 [format]
