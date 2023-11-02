@@ -30,6 +30,7 @@ let g:tex_flavor="latex"
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
 	\ "c": ["clang-format"],
+	\ "cmake": ["cmakeformat"],
 	\ "cpp": ["clang-format"],
 	\ "perl": ["perltidy"],
 	\ "python": ["isort", "black"],
