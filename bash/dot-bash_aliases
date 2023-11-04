@@ -3,7 +3,6 @@ alias egrep='egrep --color=auto --exclude=tags --exclude-dir=.git'
 alias fgrep='fgrep --color=auto --exclude=tags --exclude-dir=.git'
 alias grep='grep --color=auto --exclude=tags --exclude-dir=.git'
 alias rsyncgit='git ls-files --exclude-standard --ignored --other | rsync --cvs-exclude --exclude=.git --exclude-from=-'
-alias tmux-here='tmux new -A -c "$PWD" -s "${PWD##*/}"'
 
 # Convenience function to create a tags file for a C project, including
 # selected system headers.
@@ -82,4 +81,21 @@ rmtemp()
 	if [[ "$answer" == "y" ]]; then
 		rm -rf -- "$tmpwd"
 	fi
+}
+
+# Create a new or attach to an existing tmux session in $PWD or the directory
+# given as first argument.
+#
+# The session is named after the last path component of the above directory.
+#
+# Usage: tmux_here [dir]
+tmux_here()
+{
+	if [[ $# -gt 1 ]]; then
+		printf 'too many arguments\n' >&2
+		return 2
+	fi
+
+	here=$(realpath -e -- "${1-$PWD}") || return
+	tmux new-session -A -c "$here" -s "${here##*/}"
 }
