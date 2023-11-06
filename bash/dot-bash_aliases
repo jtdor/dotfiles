@@ -14,7 +14,7 @@ alias rsyncgit='git ls-files --exclude-standard --ignored --other | rsync --cvs-
 myctags()
 {
 	declare -r DEV_LIBS=(libc6-dev)
-	declare -r CTAGS_ARGS=( --append --kinds-C=+px --fields=+S --langmap=C:+.h --languages=C --recurse --sort=yes )
+	declare -r CTAGS_ARGS=(--append --kinds-C=+px --fields=+S --langmap=C:+.h --languages=C --recurse --sort=yes)
 
 	dev_headers=()
 	for dev_lib in "${DEV_LIBS[@]}"; do
@@ -37,7 +37,7 @@ myctags()
 # Usage: myctags [additional option(s)] [file(s)] [directory(s)]
 mycxxtags()
 {
-	declare -r CTAGS_ARGS=( --kinds-C++=+p --extras=+q --fields=+aiS --languages=C,C++ --recurse --sort=yes )
+	declare -r CTAGS_ARGS=(--kinds-C++=+p --extras=+q --fields=+aiS --languages=C,C++ --recurse --sort=yes)
 
 	declare -r stdlib_dir=$(ls -1 --directory /usr/include/c++/* | sort --unique --version-sort | tail --lines=1)
 
@@ -55,11 +55,11 @@ mycxxtags()
 # Usage: mypy3tags [additional option(s)] [file(s)] [directory(s)]
 mypy3tags()
 {
-	declare -r CTAGS_ARGS=( --append --fields=+l --languages=python --kinds-python=-iv --recurse --sort=yes )
+	declare -r CTAGS_ARGS=(--append --fields=+l --languages=python --kinds-python=-iv --recurse --sort=yes)
 
 	typeset search_path=()
 	for search_dir in $(python3 -c "import sys; print(' '.join(sys.path[1:]))"); do
-		[[ -e "$search_dir" ]] && search_path+=( "$search_dir" )
+		[[ -e "$search_dir" ]] && search_path+=("$search_dir")
 	done
 
 	ctags "${CTAGS_ARGS[@]}" "${search_path[@]}" "$@"
