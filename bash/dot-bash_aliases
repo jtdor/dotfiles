@@ -70,7 +70,7 @@ mypy3tags()
 # Usage: rmtemp
 rmtemp()
 {
-	local tmpwd=${PWD}/
+	local answer tmpwd=${PWD}/
 	if [[ "$tmpwd" != /tmp/tmp.* ]]; then
 		printf "not in a '/tmp/tmp.*' path, not removing\n" >&2
 		return
@@ -96,6 +96,7 @@ tmux_here()
 		return 2
 	fi
 
+	local here
 	here=$(realpath -e -- "${1-$PWD}") || return
 	tmux new-session -A -c "$here" -s "${here##*/}"
 }
