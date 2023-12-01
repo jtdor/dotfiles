@@ -39,3 +39,7 @@ let g:ale_fixers = {
 \}
 let g:ale_sh_shfmt_options = "--func-next-line"
 packadd! ale
+
+if filereadable("/usr/share/doc/fzf/examples/plugin/fzf.vim")
+	source /usr/share/doc/fzf/examples/plugin/fzf.vim
+endif
