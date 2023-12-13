@@ -4,6 +4,19 @@ alias fgrep='fgrep --color=auto --exclude=tags --exclude-dir=.git'
 alias grep='grep --color=auto --exclude=tags --exclude-dir=.git'
 alias rsyncgit='git ls-files --exclude-standard --ignored --other | rsync --cvs-exclude --exclude=.git --exclude-from=-'
 
+# Convenience function to display the help on (Bash) builtin commands in a
+# pager, man-like.
+#
+# For a description of the optional PATTERN parameter, see `help help` (or
+# `melp help`).
+#
+# Usage: melp [pattern ...]
+melp()
+{
+	help -m -- "$@" | pager
+} &&
+	complete -A helptopic melp
+
 # Convenience function to create a tags file for a C project, including
 # selected system headers.
 #
