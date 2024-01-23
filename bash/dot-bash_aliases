@@ -99,17 +99,21 @@ rmtemp()
 # Create a new or attach to an existing tmux session in $PWD or the directory
 # given as first argument.
 #
-# The session is named after the last path component of the above directory.
+# The session is named after the last path component of the above directory, or
+# after the name given in the optional second argument.
 #
-# Usage: tmux_here [dir]
+# To create a session in $PWD with a different name, use `tmux_here . NAME`.
+#
+# Usage: tmux_here [dir [name]]
 tmux_here()
 {
-	if [[ $# -gt 1 ]]; then
+	if [[ $# -gt 2 ]]; then
 		printf 'too many arguments\n' >&2
 		return 2
 	fi
 
-	local here
+	local here name
 	here=$(realpath -e -- "${1-$PWD}") || return
-	tmux new-session -A -c "$here" -s "${here##*/}"
+	name=${2-"${here##*/}"}
+	tmux new-session -A -c "$here" -s "$name"
 }
