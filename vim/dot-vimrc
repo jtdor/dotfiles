@@ -32,6 +32,7 @@ let g:ale_fixers = {
 	\ "c": ["clang-format"],
 	\ "cmake": ["cmakeformat"],
 	\ "cpp": ["clang-format"],
+	\ "markdown": ["pandoc"],
 	\ "perl": ["perltidy"],
 	\ "python": ["isort", "black"],
 	\ "sh": ["shfmt"],
