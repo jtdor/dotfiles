@@ -12,6 +12,7 @@
 	path = ~/.git/localconfig
 	path = ~/.git/sendemail-identities
 [merge]
+	conflictStyle = zdiff3
 	tool = vimdiff
 [pretty]
 	linux-pretty = %h (\"%s\")
