@@ -44,3 +44,5 @@ packadd! ale
 if filereadable("/usr/share/doc/fzf/examples/plugin/fzf.vim")
 	source /usr/share/doc/fzf/examples/plugin/fzf.vim
 endif
+
+packadd! fugitive
