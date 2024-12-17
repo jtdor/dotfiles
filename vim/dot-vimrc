@@ -35,6 +35,7 @@ let g:ale_fixers = {
 	\ "markdown": ["pandoc"],
 	\ "perl": ["perltidy"],
 	\ "python": ["isort", "black"],
+	\ "rust": ["rustfmt"],
 	\ "sh": ["shfmt"],
 	\ "tex": ["latexindent"],
 \}
