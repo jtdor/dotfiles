@@ -16,6 +16,8 @@ set ruler
 
 set spelllang=de,en
 
+colorscheme solarized
+
 autocmd BufRead,BufNewFile *.tpp set filetype=cpp
 
 if executable("rg")
