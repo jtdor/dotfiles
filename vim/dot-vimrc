@@ -23,6 +23,10 @@ if ! has('gui_running')
 	" fall back to straight ones
 	set t_Cs=
 endif
+" Taken from https://github.com/vim/vim/issues/7867
+if exists("$TMUX")
+	let &t_RB = "\ePtmux;\e\e]11;?\007\e\\"
+endif
 
 autocmd BufRead,BufNewFile *.tpp set filetype=cpp
 
