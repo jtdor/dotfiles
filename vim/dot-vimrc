@@ -17,6 +17,12 @@ set ruler
 set spelllang=de,en
 
 colorscheme solarized
+" Taken from https://vi.stackexchange.com/a/39994
+if ! has('gui_running')
+	" Tell Vim the terminal cannot draw squiggly underlines,
+	" fall back to straight ones
+	set t_Cs=
+endif
 
 autocmd BufRead,BufNewFile *.tpp set filetype=cpp
 
